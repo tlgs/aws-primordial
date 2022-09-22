@@ -9,7 +9,7 @@ repos:
       - id: trailing-whitespace
 
   - repo: https://github.com/aws-cloudformation/cfn-python-lint
-    rev: v0.64.1
+    rev: v0.65.1
     hooks:
       - id: cfn-python-lint
         name: lint aws cloudformation [cfn-python-lint]

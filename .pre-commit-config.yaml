@@ -1,0 +1,23 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.3.0
+    hooks:
+      - id: check-added-large-files
+      - id: detect-aws-credentials
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/aws-cloudformation/cfn-python-lint
+    rev: v0.64.1
+    hooks:
+      - id: cfn-python-lint
+        name: lint aws cloudformation [cfn-python-lint]
+        exclude: '\.pre-commit-config.yaml'
+
+  - repo: https://github.com/stelligent/cfn_nag
+    rev: v0.8.10
+    hooks:
+      - id: cfn-nag
+        name: lint aws cloudformation [cfn-nag]
+        exclude: '\.pre-commit-config.yaml'

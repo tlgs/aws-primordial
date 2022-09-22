@@ -1,0 +1,37 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "Data lake S3 buckets - raw, stage, analytics"
+
+Parameters:
+  EnvType:
+    Description: Environment type
+    Type: String
+    AllowedValues: ["dev", "prod"]
+    ConstraintDescription: "Must specify `dev` or `prod`"
+
+Conditions:
+  IsProduction: !Equals [!Ref EnvType, "prod"]
+
+Resources:
+  RawDataLayerBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub
+        - "raw-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
+        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]
+      VersioningConfiguration: !If [IsProduction, {Status: Enabled}, !Ref "AWS::NoValue"]
+
+  StageDataLayerBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub
+        - "stage-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
+        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]
+
+  AnalyticsDataLayerBucket:
+    Type: "AWS::S3::Bucket"
+    Properties:
+      BucketName: !Sub
+        - "analytics-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
+        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]

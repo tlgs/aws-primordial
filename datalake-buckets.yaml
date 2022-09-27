@@ -17,21 +17,15 @@ Resources:
   RawDataLayerBucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Sub
-        - "raw-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
-        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]
+      BucketName: !Sub "raw-${AWS::Region}-${AWS::AccountId}-${EnvType}"
       VersioningConfiguration: !If [IsProduction, {Status: Enabled}, !Ref "AWS::NoValue"]
 
   StageDataLayerBucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Sub
-        - "stage-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
-        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]
+      BucketName: !Sub "stage-${AWS::Region}-${AWS::AccountId}-${EnvType}"
 
   AnalyticsDataLayerBucket:
     Type: "AWS::S3::Bucket"
     Properties:
-      BucketName: !Sub
-        - "analytics-${StrippedRegion}-${AWS::AccountId}-${EnvType}"
-        - StrippedRegion: !Join ["", !Split ["-", !Ref "AWS::Region"]]
+      BucketName: !Sub "analytics-${AWS::Region}-${AWS::AccountId}-${EnvType}"

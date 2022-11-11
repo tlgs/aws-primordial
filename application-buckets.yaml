@@ -15,3 +15,10 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "artifacts-${AWS::Region}-${AWS::AccountId}-${EnvType}"
+
+Outputs:
+  ArtifactsBucket:
+    Description: Artifacts bucket name
+    Value: !Ref ApplicationArtifactsBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-ArtifactsBucket"

@@ -24,3 +24,16 @@ aws cloudformation create-stack \
   --template-body file://datalake-buckets.yaml \
   --parameters ParameterKey=EnvType,ParameterValue="$BUCKET_ENVIRONMENT"
 ```
+
+## Application S3 buckets
+
+WIP
+
+Create stack (while setting `BUCKET_ENVIRONMENT` appropriately):
+
+```
+aws cloudformation create-stack \
+  --stack-name application-buckets-"$BUCKET_ENVIRONMENT" \
+  --template-body file://application-buckets.yaml \
+  --parameters ParameterKey=EnvType,ParameterValue="$BUCKET_ENVIRONMENT"
+```

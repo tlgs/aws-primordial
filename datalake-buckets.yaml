@@ -29,3 +29,19 @@ Resources:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "analytics-${AWS::Region}-${AWS::AccountId}-${EnvType}"
+
+Outputs:
+  RawDataLayerBucket:
+    Value: !Ref RawDataLayerBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-RawDataLayerBucket"
+
+  StageDataLayerBucket:
+    Value: !Ref StageDataLayerBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-StageDataLayerBucket"
+
+  AnalyticsDataLayerBucket:
+    Value: !Ref AnalyticsDataLayerBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-AnalyticsDataLayerBucket"

@@ -14,34 +14,34 @@ Conditions:
   IsProduction: !Equals [!Ref EnvType, "prod"]
 
 Resources:
-  RawDataLayerBucket:
+  RawDataBucket:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "raw-${AWS::Region}-${AWS::AccountId}-${EnvType}"
       VersioningConfiguration: !If [IsProduction, {Status: Enabled}, !Ref "AWS::NoValue"]
 
-  StageDataLayerBucket:
+  StageDataBucket:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "stage-${AWS::Region}-${AWS::AccountId}-${EnvType}"
 
-  AnalyticsDataLayerBucket:
+  AnalyticsDataBucket:
     Type: "AWS::S3::Bucket"
     Properties:
       BucketName: !Sub "analytics-${AWS::Region}-${AWS::AccountId}-${EnvType}"
 
 Outputs:
-  RawDataLayerBucket:
-    Value: !Ref RawDataLayerBucket
+  RawDataBucket:
+    Value: !Ref RawDataBucket
     Export:
-      Name: !Sub "${AWS::StackName}-RawDataLayerBucket"
+      Name: !Sub "${AWS::StackName}-RawDataBucket"
 
-  StageDataLayerBucket:
-    Value: !Ref StageDataLayerBucket
+  StageDataBucket:
+    Value: !Ref StageDataBucket
     Export:
-      Name: !Sub "${AWS::StackName}-StageDataLayerBucket"
+      Name: !Sub "${AWS::StackName}-StageDataBucket"
 
-  AnalyticsDataLayerBucket:
-    Value: !Ref AnalyticsDataLayerBucket
+  AnalyticsDataBucket:
+    Value: !Ref AnalyticsDataBucket
     Export:
-      Name: !Sub "${AWS::StackName}-AnalyticsDataLayerBucket"
+      Name: !Sub "${AWS::StackName}-AnalyticsDataBucket"

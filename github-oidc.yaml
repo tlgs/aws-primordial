@@ -1,0 +1,14 @@
+---
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: "GitHub OIDC Provider"
+
+Resources:
+  GitHubOIDC:
+    Type: "AWS::IAM::OIDCProvider"
+    Properties:
+      Url: https://token.actions.githubusercontent.com
+      ClientIdList:
+        - sts.amazonaws.com
+      ThumbprintList:
+        - 6938FD4D98BAB03FAADB97B34396831E3780AEA1

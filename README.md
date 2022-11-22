@@ -37,3 +37,22 @@ aws cloudformation create-stack \
   --template-body file://application-buckets.yaml \
   --parameters ParameterKey=EnvType,ParameterValue="$BUCKET_ENVIRONMENT"
 ```
+
+## GitHub OIDC Provider
+
+OIDC Provider that applications using GitHub Actions can call to request
+short-lived credentials.
+The provider by itself is not very useful:
+**individual applications should create an IAM Role to be assumed
+for the workflows**.
+
+[aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
+should be the reference on how to have GitHub Actions interact with AWS resources.
+
+Create stack:
+
+```
+aws cloudformation create-stack \
+  --stack-name github-oidc-provider \
+  --template-body file://github-oidc.yaml
+```

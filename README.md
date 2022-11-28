@@ -40,14 +40,19 @@ aws cloudformation create-stack \
 
 ## GitHub OIDC Provider
 
-OIDC Provider that applications using GitHub Actions can call to request
-short-lived credentials.
-The provider by itself is not very useful:
-**individual applications should create an IAM Role to be assumed
-for the workflows**.
+OIDC Provider that applications using GitHub Actions
+can interact with to request short-lived credentials.
 
 [aws-actions/configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
-should be the reference on how to have GitHub Actions interact with AWS resources.
+is the _de facto_ reference on setting up GitHub Actions to interface
+with AWS resources.
+See also:
+- [Configuring OpenID Connect in Amazon Web Services](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
+  (GitHub docs)
+- [Creating OpenID Connect (OIDC) identity providers](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc.html)
+  (AWS docs)
+- [Configuring a role for GitHub OIDC identity provider](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html#idp_oidc_Create_GitHub)
+  (AWS docs)
 
 Create stack:
 
